@@ -1,0 +1,33 @@
+{
+  "name": "angular-leaflet-hexbin",
+  "version": "0.1.0",
+  "authors": [
+    "reblace <reblace@gmail.com>"
+  ],
+  "main": "angular-leaflet-hexbin.js",
+  "scripts": [
+    "angular-leaflet-hexbin.js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    ".DS_Store",
+    ".git",
+    ".gitignore",
+    ".travis.yml",
+    ".bowerrc",
+    ".jshintrc",
+    ".project",
+    "gulpfile.js",
+    "package.json",
+    "examples",
+    "node_modules",
+    "package.json",
+    "src",
+    "test"
+  ],
+  "dependencies": {
+    "d3": "~3.4.11",
+    "leaflet": "~0.7.3",
+    "d3-plugins": "*"
+  }
+}

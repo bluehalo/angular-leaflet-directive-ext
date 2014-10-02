@@ -1,0 +1,20 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Node modules
+node_modules
+
+# project files
+.project
+
+# Mac OS
+.DS_Store
+
+# Bower modules
+src/lib
