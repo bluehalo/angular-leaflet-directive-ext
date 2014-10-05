@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="demoapp">
+  <head>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="../dist/angular-leaflet-directive.min.js"></script>
+    <script src="../lib/leaflet.draw.filter/dist/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="../bower_components/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="../lib/leaflet.draw.filter/dist/leaflet.draw.css" />
+    <script>
+        var app = angular.module("demoapp", ["leaflet-directive", "leaflet-directive.ext"]);
+        app.controller("DemoController", [ "$scope", "leafletData", function($scope, leafletData) {
+            angular.extend($scope, {
+                london: {
+                    lat: 51.505,
+                    lng: -0.09,
+                    zoom: 4
+                },
+                controls: {
+                    filter: {}
+                },
+                tiles: {
+                    url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                } 
+           });
+           leafletData.getMap().then(function(map) {
+              map.on('filter:filter', function (e) {
+                  console.log(e);
+              });
+           });
+       }]);
+    </script>
+    <style>
+        input {
+            width: 120px;
+            margin-right: 10px;
+        }
+    </style>
+  </head>
+  <body ng-controller="DemoController">
+    <h1>Draw filter example</h1>
+    <p>Manipulate a filter and a geoJSON data structure will be shown on the console.log.</p>
+    <div data-leaflet data-center="london" data-controls="controls" data-tiles="tiles" style="width: 640px; height: 400px;"></div>
+  </body>
+</html>

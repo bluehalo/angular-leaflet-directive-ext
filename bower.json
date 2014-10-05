@@ -1,12 +1,12 @@
 {
-  "name": "angular-leaflet-hexbin",
+  "name": "angular-leaflet-directive-ext",
   "version": "0.1.0",
   "authors": [
     "reblace <reblace@gmail.com>"
   ],
-  "main": "angular-leaflet-hexbin.js",
   "scripts": [
-    "angular-leaflet-hexbin.js"
+    "angular-leaflet-directive-ext.filter.js",
+    "angular-leaflet-directive-ext.hexbin.js"
   ],
   "license": "MIT",
   "ignore": [
@@ -28,6 +28,11 @@
   "dependencies": {
     "d3": "~3.4.11",
     "leaflet": "~0.7.3",
-    "d3-plugins": "*"
+    "d3-plugins": "*",
+    "leaflet.draw": "~0.2.3",
+    "fontawesome": "~4.2.0",
+    "angular-leaflet-directive": "~0.7.8",
+    "leaflet-hexbin": "*",
+    "leaflet-filter": "*"
   }
 }

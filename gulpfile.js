@@ -3,7 +3,7 @@ var gulp = require('gulp'),
 	gulpLoadPlugins = require('gulp-load-plugins'),
 	plugins = gulpLoadPlugins();
 
-var banner = '/*! ' + p.name + '.js Version: ' + p.version + ' */\n';
+var banner = '/*! ' + p.name + ' Version: ' + p.version + ' */\n';
 
 gulp.task('default', ['build']);
 
@@ -11,24 +11,51 @@ gulp.task('watch', function(){
 	gulp.watch(['src/**/*', '!/src/lib/**/*'], ['build']);
 });
 
-gulp.task('build', ['js'] );
+gulp.task('build', ['js-hexbin', 'js-filter'] );
 
-gulp.task('js', function(){
-	return gulp.src('src/js/**/*.js')
+gulp.task('js-hexbin', function(){
+	return gulp.src([
+			'src/js/hexbin/leaflet.js',
+			'src/js/hexbin/hexbin.js'
+		])
 
 		// JS Hint
 		.pipe(plugins.jshint('.jshintrc'))
 		.pipe(plugins.jshint.reporter('jshint-stylish'))
 
 		// Concatenate
-		.pipe(plugins.concat(p.name + '.js'))
+		.pipe(plugins.concat(p.name + '.hexbin.js'))
 		.pipe(plugins.insert.prepend(banner))
 		.pipe(gulp.dest('dist'))
 		.pipe(plugins.filesize())
 
 		// Uglify
 		.pipe(plugins.uglify())
-		.pipe(plugins.rename(p.name + '.min.js'))
+		.pipe(plugins.rename(p.name + '.hexbin.min.js'))
+		.pipe(plugins.insert.prepend(banner))
+		.pipe(gulp.dest('dist'))
+		.pipe(plugins.filesize())
+		.on('error', plugins.util.log);
+});
+
+gulp.task('js-filter', function(){
+	return gulp.src([
+			'src/js/filter/controls.js'
+		])
+
+		// JS Hint
+		.pipe(plugins.jshint('.jshintrc'))
+		.pipe(plugins.jshint.reporter('jshint-stylish'))
+
+		// Concatenate
+		.pipe(plugins.concat(p.name + '.filter.js'))
+		.pipe(plugins.insert.prepend(banner))
+		.pipe(gulp.dest('dist'))
+		.pipe(plugins.filesize())
+
+		// Uglify
+		.pipe(plugins.uglify())
+		.pipe(plugins.rename(p.name + '.filter.min.js'))
 		.pipe(plugins.insert.prepend(banner))
 		.pipe(gulp.dest('dist'))
 		.pipe(plugins.filesize())

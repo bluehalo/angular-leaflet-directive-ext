@@ -5,6 +5,7 @@
 
 	"globals": {
 		"L": true,
-		"document": true
+		"document": true,
+		"angular": true
 	}
 }
