@@ -1,13 +1,18 @@
-# Leaflet d3 Hexbin Plugin Directive for Angular
+# Leaflet Angular Directive Extensions
 
 [![Build Status][travis-image]][travis-url]
 
 ## What is it?
-This is an Angular directive that wraps leaflet.hexbin
+This project wraps the popular [Angular Leaflet Directive project](https://github.com/tombatossals/angular-leaflet-directive) project, extending it to include two additional leaflet plugins: [d3 hexbins](https://github.com/Asymmetrik/leaflet-hexbin) and [filter boxes](https://github.com/Asymmetrik/leaflet-filter).
 
 ## How do I use it?
 
+### d3 Hexbin
+```js
 
+```
+
+### Filter
 ```js
 
 ```
@@ -16,22 +21,14 @@ This is an Angular directive that wraps leaflet.hexbin
 The easiest way to include this package in your project, is to use [Bower](http://bower.io)
 
 ```bash
-bower install -S angular-leaflet-hexbin
+bower install -S angular-leaflet-directive-ext
 ```
 
 Alternatively, you can download the source or minified javascript files yourself from the GitHub repository (they are contained in the dist directory).
 
 Alter-alternatively, you can clone this repo and build it yourself.
 
-You will also need to install the dependencies, which include [leaflet.js](http://leafletjs.com/), [d3.js](http://www.d3js.org), [d3-plugins](https://github.com/d3/d3-plugins), and [AngularJS](https://angularjs.org/).
-
-```bash
-bower install -S leaflet
-bower install -S leaflet.hexbin
-bower install -S d3
-bower install -S d3-plugins
-bower install -S angularjs
-```
+You will also need to install the dependencies (you can find them in the bower.json file).
 
 
 ## How do I build this project?
@@ -50,5 +47,5 @@ bower install
 gulp
 ```
 
-[travis-url]: https://travis-ci.org/Asymmetrik/angular-leaflet-filter/
-[travis-image]: https://travis-ci.org/Asymmetrik/angular-leaflet-filter.svg
+[travis-url]: https://travis-ci.org/Asymmetrik/angular-leaflet-directive-ext/
+[travis-image]: https://travis-ci.org/Asymmetrik/angular-leaflet-directive-ext.svg
