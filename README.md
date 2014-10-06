@@ -9,12 +9,60 @@ This project wraps the popular [Angular Leaflet Directive project](https://githu
 
 ### d3 Hexbin
 ```js
+var app = angular.module("demoapp", ["leaflet-directive", "leaflet-directive.ext.hexbin"]);
+app.controller("DemoController", [ "$scope", "leafletData", function($scope, leafletData) {
+	angular.extend($scope, {
+		london: {
+			lat: 51.505,
+			lng: -0.09,
+			zoom: 4
+		},
+		tiles: {
+			url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+		},
+		hexbin: {
+			data: [],
+			config: {}
+		}
+	});
 
+	var latFn = d3.random.normal(51.505, 0.2);
+	var longFn = d3.random.normal(-0.09, 0.2);
+
+	$scope.generateData = function(){
+		var data = [];
+		for(i=0; i<1000; i++){
+			data.push( [longFn(), latFn()] );
+		}
+		$scope.hexbin.data = data;
+	};
+
+}]);
 ```
 
 ### Filter
 ```js
-
+var app = angular.module("demoapp", ["leaflet-directive", "leaflet-directive.ext.filter"]);
+app.controller("DemoController", [ "$scope", "leafletData", function($scope, leafletData) {
+	angular.extend($scope, {
+		london: {
+			lat: 51.505,
+			lng: -0.09,
+			zoom: 4
+		},
+		controls: {
+			filter: {}
+		},
+		tiles: {
+			url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+		}
+	});
+	leafletData.getMap().then(function(map) {
+		map.on('filter:filter', function (e) {
+			console.log(e);
+		});
+	});
+}]);
 ```
 
 ## How do I include this package in my project?
