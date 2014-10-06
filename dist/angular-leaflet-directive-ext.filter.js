@@ -1,3 +1,4 @@
+/*! angular-leaflet-directive-ext Version: 0.1.0 */
 /*
  * We are extending the controls directive of leaflet-directive in order to add initialization of the 
  * filter component as part of the controls directive
