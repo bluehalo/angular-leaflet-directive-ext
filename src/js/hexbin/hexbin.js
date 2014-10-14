@@ -1,4 +1,4 @@
-angular.module("leaflet-directive.ext.hexbin").directive('hexbin', function() {
+angular.module("leaflet-directive.ext.d3.hexbin").directive('hexbin', function() {
 	"use strict";
 
 	return {

@@ -30,7 +30,7 @@ angular.module('leaflet-directive.ext.filter', ['leaflet-directive']).config(fun
 				// Get the map
 				controller.getMap().then(function(map) {
 					// If the filter leaflet plugin is loaded and the filter config exists, then add it
-					if (isDefined(L.Control.Filter) && isDefined(controls.filter)) {
+					if (null != L && null != L.Control && isDefined(L.Control.Filter) && null != controls && isDefined(controls.filter)) {
 
 						// Initialize the Filter Control
 						var filterFeature = new L.FeatureGroup();

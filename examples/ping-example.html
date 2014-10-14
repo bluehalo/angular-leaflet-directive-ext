@@ -3,7 +3,6 @@
 	<head>
 		<script src="../src/lib/angular/angular.js"></script>
 		<script src="../src/lib/d3/d3.js" charset="utf-8"></script>
-		<script src="../src/lib/d3-plugins/hexbin/hexbin.js" charset="utf-8"></script>
 		<script src="../src/lib/leaflet/dist/leaflet-src.js"></script>
 		<script src="../src/lib/leaflet-d3/dist/leaflet-d3.js"></script>
 		<script src="../src/lib/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
@@ -13,7 +12,7 @@
 		<link rel="stylesheet" href="../src/lib/leaflet/dist/leaflet.css" />
 
 		<script>
-			var app = angular.module("demoapp", ["leaflet-directive", "leaflet-directive.ext.d3.hexbin"]);
+			var app = angular.module("demoapp", ["leaflet-directive", "leaflet-directive.ext.d3.ping"]);
 			app.controller("DemoController", [ "$scope", "leafletData", function($scope, leafletData) {
 				angular.extend($scope, {
 					london: {
@@ -24,8 +23,8 @@
 					tiles: {
 						url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 					},
-					hexbin: {
-						data: [],
+					ping: {
+						event: 'leaflet:ping',
 						config: {}
 					}
 				});
@@ -33,28 +32,22 @@
 				var latFn = d3.random.normal(51.505, 0.2);
 				var longFn = d3.random.normal(-0.09, 0.2);
 
-				$scope.generateData = function(){
-					var data = [];
-					for(i=0; i<1000; i++){
-						data.push( [longFn(), latFn()] );
-					}
-					$scope.hexbin.data = data;
+				var update = function(){
+					$scope.$broadcast('leaflet:ping', [latFn(), longFn()]);
+					window.setTimeout(update, 100 + Math.random()*400);
 				};
+				window.setTimeout(update);
 
 			}]);
 
 		</script>
 		<style>
-			.hexbin-hexagon {
-					stroke: #fff;
-					stroke-width: 1px;
-			}
+			
 		</style>
 	</head>
 	<body ng-controller="DemoController">
-		<h1>Hexbin Overlay example</h1>
-		<p>Dynamic hexbin heatmap data overlay.</p>
-		<div data-leaflet data-center="london" data-hexbin="hexbin" data-tiles="tiles" style="width: 640px; height: 400px;"></div>
-		<button data-ng-click="generateData()">Randomize Data</button>
+		<h1>Ping Overlay example</h1>
+		<p>Real-time ping overlay example.</p>
+		<div data-leaflet data-center="london" data-ping="ping" data-tiles="tiles" style="width: 640px; height: 400px;"></div>
 	</body>
 </html>
