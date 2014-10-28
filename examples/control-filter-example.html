@@ -30,12 +30,31 @@
 						url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 					}
 				});
+
+				$scope.create = function(){
+					$scope.controls.filter.shape = {
+						type: 'rectangle',
+						northEast: {
+							lat: 53 + (Math.random() - 0.5),
+							lng: 3 + (Math.random() - 0.5)
+						},
+						southWest: {
+							lat: 48 + (Math.random() - 0.5),
+							lng: -3 + (Math.random() - 0.5)
+						}
+					};
+				};
+				$scope.clear = function(){
+					$scope.controls.filter.shape = null;
+				};
+
 				leafletData.getMap().then(function(map) {
 					map.on('filter:filter', function (e) {
 						console.log(e);
 					});
 				});
 			}]);
+
 		</script>
 		<style>
 			input {
@@ -44,9 +63,11 @@
 			}
 		</style>
 	</head>
-	<body ng-controller="DemoController">
+	<body data-ng-controller="DemoController">
 		<h1>Draw filter example</h1>
 		<p>Manipulate a filter and a geoJSON data structure will be shown on the console.log.</p>
-		<div data-leaflet data-center="london" data-controls="controls" data-tiles="tiles" style="width: 640px; height: 400px;"></div>
+		<div data-leaflet data-center="london" data-controls="controls" data-tiles="tiles" style="width: 400px; height: 300px;"></div>
+		<button data-ng-click="create()">Create</button>
+		<button data-ng-click="clear()">Clear</button>
 	</body>
 </html>
