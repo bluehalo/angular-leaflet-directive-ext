@@ -1,4 +1,4 @@
-/*! angular-leaflet-directive-ext Version: 0.2.1 */
+/*! angular-leaflet-directive-ext Version: 0.2.2 */
 angular.module('leaflet-directive.ext.d3.hexbin', ['leaflet-directive']).config(function($provide){
 	"use strict";
 

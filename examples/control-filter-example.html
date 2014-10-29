@@ -45,13 +45,12 @@
 					};
 				};
 				$scope.clear = function(){
-					$scope.controls.filter.shape = null;
+					$scope.controls.filter.shape = undefined;
 				};
 
-				leafletData.getMap().then(function(map) {
-					map.on('filter:filter', function (e) {
-						console.log(e);
-					});
+				$scope.$watch('controls.filter.shape', function(n, o){
+					console.log('Watch!');
+					console.log(n);
 				});
 			}]);
 

@@ -1,4 +1,4 @@
-/*! angular-leaflet-directive-ext Version: 0.2.1 */
+/*! angular-leaflet-directive-ext Version: 0.2.2 */
 /*
  * We are extending the controls directive of leaflet-directive in order to add initialization of the 
  * filter component as part of the controls directive
@@ -6,7 +6,7 @@
 angular.module('leaflet-directive.ext.filter', ['leaflet-directive']).config(function($provide){
 	"use strict";
 
-	$provide.decorator('controlsDirective', function($delegate, leafletHelpers){
+	$provide.decorator('controlsDirective', function($delegate, $timeout, leafletHelpers){
 		// Grab a reference to the directive
 		var directive = $delegate[0];
 
@@ -48,16 +48,21 @@ angular.module('leaflet-directive.ext.filter', ['leaflet-directive']).config(fun
 						map.addControl(filterControl);
 
 						leafletScope.$watch('controls.filter.shape', function(n, o){
-							if(n != o) {
+							if(n !== o) {
 								filterControl.setFilter(n);
 							}
 						});
 
 						// Handler for the filter event (see below)
 						var filterHandler = function(e){
-							// update the model object if the filter object is set and it has changed
-							if(null != controls && null != controls.filter && (controls.filter.model !== e.geo)){
-								controls.filter.model = e.geo;
+							// update the shape if the filter object is set and it has changed
+							if(null != controls && null != controls.filter){
+								// Finally, check to make sure that the change is actually a change
+								if(!filterControl.equals(controls.filter.shape, e.geo)) {
+									$timeout(function(){
+										controls.filter.shape = e.geo;
+									});
+								}
 							}
 						};
 
