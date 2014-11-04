@@ -1,6 +1,6 @@
 {
   "name": "angular-leaflet-directive-ext",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "authors": [
     "reblace <reblace@gmail.com>"
   ],
@@ -26,11 +26,11 @@
     "test"
   ],
   "dependencies": {
-    "d3": "~3.4.11",
+    "d3": "~3.4",
     "leaflet": "~0.7.3",
     "d3-plugins": "*",
     "leaflet.draw": "~0.2.3",
-    "fontawesome": "~4.2.0",
+    "fontawesome": "~4.2",
     "angular-leaflet-directive": "~0.7.8",
     "leaflet-d3": "~0.2",
     "leaflet-filter": "~0.2"
