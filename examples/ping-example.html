@@ -33,7 +33,7 @@
 				var longFn = d3.random.normal(-0.09, 0.2);
 
 				var update = function(){
-					$scope.$broadcast('leaflet:ping', [latFn(), longFn()]);
+					$scope.$broadcast('leaflet:ping', [longFn(), latFn()]);
 					window.setTimeout(update, 100 + Math.random()*400);
 				};
 				window.setTimeout(update);
