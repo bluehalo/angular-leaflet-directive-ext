@@ -14,8 +14,8 @@
 		<script>
 			var app = angular.module("demoapp", ["leaflet-directive", "leaflet-directive.ext.d3.ping"]);
 			app.controller("DemoController", [ "$scope", "leafletData", function($scope, leafletData) {
-				angular.extend($scope, {
-					london: {
+				$scope.config = {
+					center: {
 						lat: 51.505,
 						lng: -0.09,
 						zoom: 4
@@ -27,7 +27,7 @@
 						event: 'leaflet:ping',
 						config: {}
 					}
-				});
+				};
 
 				var latFn = d3.random.normal(51.505, 0.2);
 				var longFn = d3.random.normal(-0.09, 0.2);
@@ -48,6 +48,6 @@
 	<body ng-controller="DemoController">
 		<h1>Ping Overlay example</h1>
 		<p>Real-time ping overlay example.</p>
-		<div data-leaflet data-center="london" data-ping="ping" data-tiles="tiles" style="width: 640px; height: 400px;"></div>
+		<div data-leaflet data-center="config.center" data-ping="config.ping" data-tiles="config.tiles" style="width: 640px; height: 400px;"></div>
 	</body>
 </html>

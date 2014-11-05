@@ -15,8 +15,8 @@
 		<script>
 			var app = angular.module("demoapp", ["leaflet-directive", "leaflet-directive.ext.d3.hexbin"]);
 			app.controller("DemoController", [ "$scope", "leafletData", function($scope, leafletData) {
-				angular.extend($scope, {
-					london: {
+				$scope.config = {
+					center: {
 						lat: 51.505,
 						lng: -0.09,
 						zoom: 4
@@ -28,7 +28,7 @@
 						data: [],
 						config: {}
 					}
-				});
+				};
 
 				var latFn = d3.random.normal(51.505, 0.2);
 				var longFn = d3.random.normal(-0.09, 0.2);
@@ -38,7 +38,7 @@
 					for(i=0; i<1000; i++){
 						data.push( [longFn(), latFn()] );
 					}
-					$scope.hexbin.data = data;
+					$scope.config.hexbin.data = data;
 				};
 
 			}]);
@@ -54,7 +54,7 @@
 	<body ng-controller="DemoController">
 		<h1>Hexbin Overlay example</h1>
 		<p>Dynamic hexbin heatmap data overlay.</p>
-		<div data-leaflet data-center="london" data-hexbin="hexbin" data-tiles="tiles" style="width: 640px; height: 400px;"></div>
+		<div data-leaflet data-center="config.center" data-hexbin="config.hexbin" data-tiles="config.tiles" style="width: 640px; height: 400px;"></div>
 		<button data-ng-click="generateData()">Randomize Data</button>
 	</body>
 </html>

@@ -1,4 +1,4 @@
-/*! angular-leaflet-directive-ext Version: 0.2.3 */
+/*! angular-leaflet-directive-ext Version: 0.2.4 */
 angular.module('leaflet-directive.ext.d3.hexbin', ['leaflet-directive']).config(function($provide){
 	"use strict";
 
@@ -18,18 +18,22 @@ angular.module("leaflet-directive.ext.d3.hexbin").directive('hexbin', function()
 		require : 'leaflet',
 		link : function(scope, element, attrs, controller) {
 
+			// Get the leaflet scope from the parent leaflet controller
+			var leafletScope = controller.getLeafletScope();
+
 			controller.getMap().then(function(map) {
 				// Initialize the hexbin layer
-				var hexLayer = L.hexbinLayer(scope.hexbin.config).addTo(map);
-				var temp = scope.hexbin;
+				var hexLayer = L.hexbinLayer(leafletScope.hexbin.config).addTo(map);
+				var temp = leafletScope.hexbin;
 
 				// Watch the hexbin scope variable
-				scope.$watch('hexbin.data', function(){
-					hexLayer.data(scope.hexbin.data);
+				leafletScope.$watch('hexbin.data', function(){
+					hexLayer.data(leafletScope.hexbin.data);
 				});
 
-				hexLayer.data(scope.hexbin.data);
+				hexLayer.data(leafletScope.hexbin.data);
 			});
+
 		}
 	};
 });
@@ -38,7 +42,7 @@ angular.module('leaflet-directive.ext.d3.ping', ['leaflet-directive']).config(fu
 	"use strict";
 
 	$provide.decorator('leafletDirective', function($delegate){
-		// Just adding the scope variable called 'hexbin'
+		// Just adding the scope variable called 'ping'
 		$delegate[0].scope.ping = "=";
 		return $delegate;
 	});
@@ -53,10 +57,13 @@ angular.module("leaflet-directive.ext.d3.ping").directive('ping', function() {
 		require : 'leaflet',
 		link : function(scope, element, attrs, controller) {
 
+			// Get the leaflet scope from the parent leaflet controller
+			var leafletScope = controller.getLeafletScope();
+
 			controller.getMap().then(function(map) {
 				// Initialize the ping layer
-				var pingLayer = L.pingLayer(scope.ping.config).addTo(map);
-				scope.$on(scope.ping.event, function(event, pingData){
+				var pingLayer = L.pingLayer(leafletScope.ping.config).addTo(map);
+				leafletScope.$on(leafletScope.ping.event, function(event, pingData){
 					pingLayer.ping(pingData);
 				});
 			});
