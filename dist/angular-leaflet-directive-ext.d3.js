@@ -1,18 +1,23 @@
-/*! angular-leaflet-directive-ext Version: 0.2.4 */
+/*! angular-leaflet-directive-ext Version: 0.3.0 */
 angular.module('leaflet-directive.ext.d3.hexbin', ['leaflet-directive']).config(function($provide){
-	"use strict";
+	'use strict';
 
 	$provide.decorator('leafletDirective', function($delegate){
 		// Just adding the scope variable called 'hexbin'
-		$delegate[0].scope.hexbin = "=";
+		$delegate[0].$$isolateBindings.hexbin = {
+			attrName: 'hexbin',
+			mode: '=',
+			optional: true
+		};
+
 		return $delegate;
 	});
 });
-angular.module("leaflet-directive.ext.d3.hexbin").directive('hexbin', function() {
-	"use strict";
+angular.module('leaflet-directive.ext.d3.hexbin').directive('hexbin', function() {
+	'use strict';
 
 	return {
-		restrict : "A",
+		restrict : 'A',
 		scope : false,
 		replace : false,
 		require : 'leaflet',
@@ -39,19 +44,24 @@ angular.module("leaflet-directive.ext.d3.hexbin").directive('hexbin', function()
 });
 
 angular.module('leaflet-directive.ext.d3.ping', ['leaflet-directive']).config(function($provide){
-	"use strict";
+	'use strict';
 
 	$provide.decorator('leafletDirective', function($delegate){
 		// Just adding the scope variable called 'ping'
-		$delegate[0].scope.ping = "=";
+		$delegate[0].$$isolateBindings.ping = {
+			attrName: 'ping',
+			mode: '=',
+			optional: true
+		};
+
 		return $delegate;
 	});
 });
-angular.module("leaflet-directive.ext.d3.ping").directive('ping', function() {
-	"use strict";
+angular.module('leaflet-directive.ext.d3.ping').directive('ping', function() {
+	'use strict';
 
 	return {
-		restrict : "A",
+		restrict : 'A',
 		scope : false,
 		replace : false,
 		require : 'leaflet',

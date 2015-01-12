@@ -1,8 +1,8 @@
-angular.module("leaflet-directive.ext.d3.hexbin").directive('hexbin', function() {
-	"use strict";
+angular.module('leaflet-directive.ext.d3.hexbin').directive('hexbin', function() {
+	'use strict';
 
 	return {
-		restrict : "A",
+		restrict : 'A',
 		scope : false,
 		replace : false,
 		require : 'leaflet',
