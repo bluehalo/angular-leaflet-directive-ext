@@ -17,7 +17,7 @@ angular.module('leaflet-directive.ext.d3.hexbin').directive('hexbin', function()
 				var temp = leafletScope.hexbin;
 
 				// Watch the hexbin scope variable
-				leafletScope.$watch('hexbin.data', function(){
+				leafletScope.$watchCollection('hexbin.data', function(){
 					hexLayer.data(leafletScope.hexbin.data);
 				});
 

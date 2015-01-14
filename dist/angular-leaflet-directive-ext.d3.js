@@ -1,4 +1,4 @@
-/*! angular-leaflet-directive-ext Version: 0.3.0 */
+/*! angular-leaflet-directive-ext Version: 0.3.1 */
 angular.module('leaflet-directive.ext.d3.hexbin', ['leaflet-directive']).config(function($provide){
 	'use strict';
 
@@ -32,7 +32,7 @@ angular.module('leaflet-directive.ext.d3.hexbin').directive('hexbin', function()
 				var temp = leafletScope.hexbin;
 
 				// Watch the hexbin scope variable
-				leafletScope.$watch('hexbin.data', function(){
+				leafletScope.$watchCollection('hexbin.data', function(){
 					hexLayer.data(leafletScope.hexbin.data);
 				});
 
