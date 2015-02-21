@@ -32,7 +32,9 @@ gulp.task('js-hexbin', function(){
 		.pipe(plugins.filesize())
 
 		// Uglify
-		.pipe(plugins.uglify())
+		.pipe(plugins.uglify({
+			mangle: false
+		}))
 		.pipe(plugins.rename(p.name + '.d3.min.js'))
 		.pipe(plugins.insert.prepend(banner))
 		.pipe(gulp.dest('dist'))
@@ -56,7 +58,9 @@ gulp.task('js-filter', function(){
 		.pipe(plugins.filesize())
 
 		// Uglify
-		.pipe(plugins.uglify())
+		.pipe(plugins.uglify({
+			mangle: false
+		}))
 		.pipe(plugins.rename(p.name + '.filter.min.js'))
 		.pipe(plugins.insert.prepend(banner))
 		.pipe(gulp.dest('dist'))
