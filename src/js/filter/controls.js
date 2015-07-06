@@ -47,9 +47,7 @@ angular.module('leaflet-directive.ext.filter', ['leaflet-directive']).config([ '
 						map.addControl(filterControl);
 
 						leafletScope.$watch('controls.filter.shape', function(n, o){
-							if(n !== o) {
-								filterControl.setFilter(n);
-							}
+							filterControl.setFilter(n);
 						});
 
 						// Handler for the filter event (see below)
