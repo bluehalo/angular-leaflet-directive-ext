@@ -30,7 +30,7 @@
     "leaflet": "~0.7.3",
     "d3-plugins": "*",
     "leaflet.draw": "~0.2.3",
-    "fontawesome": "~4.2",
+    "font-awesome": "~4.4",
     "angular": "~1.3",
     "angular-leaflet-directive": "0.7.9",
     "leaflet-d3": "~0.2",
