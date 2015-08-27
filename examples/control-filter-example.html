@@ -8,7 +8,7 @@
 		<script src="../src/lib/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
 
 		<link rel="stylesheet" href="../src/lib/leaflet/dist/leaflet.css" />
-		<link rel="stylesheet" href="../src/lib/fontawesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="../src/lib/font-awesome/css/font-awesome.css" />
 		<link rel="stylesheet" href="../src/lib/leaflet.draw/dist/leaflet.draw.css" />
 		<link rel="stylesheet" href="../src/lib/leaflet-filter/dist/leaflet-filter.css" />
 
@@ -49,7 +49,6 @@
 				};
 
 				$scope.$watch('controls.filter.shape', function(n, o){
-					console.log('Watch!');
 					console.log(n);
 				});
 			}]);
