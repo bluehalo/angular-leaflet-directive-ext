@@ -1,6 +1,6 @@
 {
   "name": "angular-leaflet-directive-ext",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "devDependencies": {
     "gulp": "^3.8",
     "gulp-concat": "^2.4",
