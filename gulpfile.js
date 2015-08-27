@@ -11,9 +11,9 @@ gulp.task('watch', function(){
 	gulp.watch(['src/**/*', '!/src/lib/**/*'], ['build']);
 });
 
-gulp.task('build', ['js-hexbin', 'js-filter'] );
+gulp.task('build', ['js-d3', 'js-filter'] );
 
-gulp.task('js-hexbin', function(){
+gulp.task('js-d3', function(){
 	return gulp.src([
 			'src/js/hexbin/leaflet.js',
 			'src/js/hexbin/hexbin.js',
